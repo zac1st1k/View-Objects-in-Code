@@ -48,12 +48,21 @@
 //    self.myButton.frame = myButtonFrame;
     [self.myButton setTitle:@"Press me!" forState:UIControlStateNormal];
     [self.view addSubview:self.myButton];
+    
+    [self.myButton addTarget:self action:@selector(myButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)myButtonPressed
+{
+    self.myLabel.text = self.myTextField.text;
+    [self.myTextField resignFirstResponder];
+    [self.myButton removeFromSuperview];
 }
 
 @end
